@@ -43,10 +43,12 @@ class EtudiantController extends Controller
             DB::beginTransaction();;
             $mat = $this->generate_matricule();
             Etudiant::create(array_merge($request->all(), ['code_etud'=>$mat]));//ou create
-            DB::commit();
+            DB::commit();//Appliquer les changements
+            return redirect('/inscription_etudiant')->with('success', "Opération réussie");
+
         }catch (\Throwable $th){
-            DB::rollBack();
-            dd($th);
+            return redirect("/",)->with("error", "Echec de l'opération");
+//            dd($th);
         }
     }
 

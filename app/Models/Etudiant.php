@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class Etudiant
- * 
+ *
  * @property string $code_etud
  * @property string $nom_etud
  * @property string|null $prenom_etud
@@ -40,7 +40,7 @@ class Etudiant extends Model
 		'prenom_etud',
 		'tel_etud',
 		'mail_etud',
-		'annee_etud'
+		'anne_etud'
 	];
 	public function evaluations(){
 		return $this->hasMany(Evaluation::class, 'code_etud');
