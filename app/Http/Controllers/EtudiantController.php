@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Etudiant;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -15,7 +16,8 @@ class EtudiantController extends Controller
      */
     public function index()
     {
-        return view('etudiant.inscription');
+        $etudiant = Etudiant::orderBy('updated_at' , 'ASC')->get();
+        return view('etudiant.list', compact('etudiant'));
     }
 
     /**
@@ -23,7 +25,7 @@ class EtudiantController extends Controller
      */
     public function create()
     {
-        //
+        return view('etudiant.inscription');
     }
 
     /**
@@ -44,7 +46,7 @@ class EtudiantController extends Controller
             $mat = $this->generate_matricule();
             Etudiant::create(array_merge($request->all(), ['code_etud'=>$mat]));//ou create
             DB::commit();//Appliquer les changements
-            return redirect('/inscription_etudiant')->with('success', "Opération réussie");
+            return redirect('/etudiant')->with('success', "Opération réussie");
 
         }catch (\Throwable $th){
             return redirect("/",)->with("error", "Echec de l'opération");
@@ -55,33 +57,50 @@ class EtudiantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         //
     }
 
     /**
+     * @param int $code_etud
      * Show the form for editing the specified resource.
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(string $id)
+    public function edit($code_etud)
     {
+        $etudiant = Etudiant::findOrFail($code_etud);
+        return view('etudiant.edit', compact('etudiant'));
         //
     }
 
     /**
      * Update the specified resource in storage.
+     * @param Request $request
+     * @param int $code_etud
+     * @return RedirectResponse
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $code_etud)
     {
         //
+        $product = Etudiant::findOrFail($code_etud);
+
+        $product->update($request->all());
+
+        return redirect()->route('etudiant')->with('success', 'Student updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $code_etud)
     {
         //
+        $etudiant = Etudiant::findOrFail($code_etud);
+
+        $etudiant->delete();
+
+        return redirect()->route('etudiant')->with('success', 'Student deleted successfully');
     }
 
     public function generate_matricule(){

@@ -17,10 +17,12 @@
         </style>
     </head>
     <body class="antialiased container">
-    <h1>Welcome on Academy Manager</h1>
-    <h3><a href="/login" class="btn btn-outline-primary">Cliquez pour vous connecter</a></h3>
-    <h3><a href="/register" class="btn btn-outline-success">Cliquez pour vous inscrire</a></h3>
-    <h3><a href="/inscription_etudiant" class="btn btn-outline-secondary">Cliquez pour inscrire un étudiant</a></h3>
-
+    <div class="grid-cols-1">
+        <h1>Welcome on Academy Manager</h1>
+        <h3><a href="/login" class="btn btn-outline-primary">Cliquez pour vous connecter</a></h3>
+        <h3><a href="/register" class="btn btn-outline-success">Cliquez pour vous inscrire</a></h3>
+        <h3><a href="/etudiant" class="btn btn-secondary">Cliquez pour Afficher la liste des étudiants</a></h3>
+        <h3><a href="/etudiant/create" class="btn btn-outline-secondary">Cliquez pour inscrire un étudiant</a></h3>
+    </div>
     </body>
 </html>

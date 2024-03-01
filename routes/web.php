@@ -21,8 +21,8 @@ Route::get('/', function () {
 });
 
 
-Route::get("/inscription_etudiant", [EtudiantController::class, 'index']);
-Route::post('etudiant/save', ([EtudiantController::class, 'store']));
+//Route::get("/inscription_etudiant", [EtudiantController::class, 'create']);
+//Route::post('etudiant/save', ([EtudiantController::class, 'store']));
 
 //Route::get('/login', [LoginController::class, 'index'])->name("login");
 //Route::post('/login', [LoginController::class, 'store'])->middleware(['guest']);
@@ -31,3 +31,11 @@ Route::post('etudiant/save', ([EtudiantController::class, 'store']));
 //    ->name('register');
 //Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 //Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+Route::controller(EtudiantController::class)->prefix('etudiant')->group(function () {
+    Route::get('', 'index')->name('etudiant');
+    Route::get('create', 'create')->name('etudiant.create');
+    Route::post('store', 'store')->name('etudiant.store');
+    Route::get('edit/{code_etud}', 'edit')->name('etudiant.edit');
+    Route::put('edit/{code_etud}', 'update')->name('etudiant.update');
+    Route::delete('destroy/{code_etud}', 'destroy')->name('etudiant.destroy');
+});

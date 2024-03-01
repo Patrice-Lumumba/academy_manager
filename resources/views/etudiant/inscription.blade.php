@@ -5,9 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?php use App\Models\Etudiant;
-
-           $title = "Inscription"; ?></title>
+    <title><?php use App\Models\Etudiant; $title = "Inscription"; ?></title>
     <link href="{{asset('assets/css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
     <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/jquery-3.7.1.min.js')}}"></script>
@@ -25,7 +23,7 @@
 <div class="card mt-4" style="width: 50%; margin: auto;">
     <div class="card-body">
         <h5 class="card-title">Formulaire d'inscription</h5>
-        <form action="etudiant/save" method="post" class="mt-3">
+        <form action="{{ route('etudiant.store') }}" method="post" class="mt-3">
 
 
             {{@csrf_field()}}
@@ -82,26 +80,7 @@
 
 
     </div>
-    <table class="table table-striped">
-        <tr>
-            <th>Code</th>
-            <th>Nom</th>
-            <th>Prenom</th>
-            <th>Téléphone</th>
-            <th>Email</th>
-            <th>Année</th>
-        </tr>
-        @foreach(Etudiant::all() as $e)
-            <tr>
-                <td>{{$e->code_etud}}</td>
-                <td>{{$e->nom_etud}}</td>
-                <td>{{$e->prenom_etud}}</td>
-                <td>{{$e->tel_etud}}</td>
-                <td>{{$e->mail_etud}}</td>
-                <td>{{$e->anne_etud}}</td>
-            </tr>
-        @endforeach
-    </table>
+
 </div>
 
 </body>
