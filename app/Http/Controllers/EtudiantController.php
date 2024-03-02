@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Etudiant;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +19,7 @@ class EtudiantController extends Controller
      */
     public function index()
     {
-        $etudiant = Etudiant::orderBy('updated_at' , 'ASC')->get();
+        $etudiant = Etudiant::orderBy('updated_at' , 'DESC')->get();
         return view('etudiant.list', compact('etudiant'));
     }
 
@@ -65,7 +68,7 @@ class EtudiantController extends Controller
     /**
      * @param int $code_etud
      * Show the form for editing the specified resource.
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function edit($code_etud)
     {

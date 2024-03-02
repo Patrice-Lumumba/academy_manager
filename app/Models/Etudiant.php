@@ -40,7 +40,8 @@ class Etudiant extends Model
 		'prenom_etud',
 		'tel_etud',
 		'mail_etud',
-		'anne_etud'
+		'anne_etud',
+        'updated_at'
 	];
 	public function evaluations(){
 		return $this->hasMany(Evaluation::class, 'code_etud');

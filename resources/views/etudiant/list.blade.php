@@ -46,7 +46,7 @@
                 <td>{{$e->anne_etud}}</td>
                 <td class="align-middle">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="{{ route('etudiant.edit', $e->code_etud)}}" type="button" class="btn btn-warning">Edit <i class="fas fa-pencil-alt"></i></a>
+                        <a href="{{ route('etudiant.edit', $e->code_etud)}}" type="button" class="btn btn-warning">Edit <i class="fas fa-edit"></i></a>
                         <form action="{{ route('etudiant.destroy', $e->code_etud) }}" method="POST" type="button" class="btn btn-danger p-0" onsubmit="return confirm('Delete?')">
                             @csrf
                             @method('DELETE')
