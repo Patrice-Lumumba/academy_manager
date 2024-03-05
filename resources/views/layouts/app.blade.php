@@ -11,7 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{asset('assets/css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/libs/fontawesome/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/libs/fontawesome/@fortawesome/fontawesome-free/css/all.min.css')}}" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+
 </head>
 <body id="page-top">
 
@@ -22,7 +23,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
 
         <div id="content">
-{{--            @include('layouts.navbar')--}}
+            @include('layouts.navbar')
         </div>
         <div class="container-fluid">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -34,26 +35,6 @@
         </div>
 
     </div>
-
-{{--    @include('layouts.footer')--}}
-{{--</div>--}}
-{{--<a href="#page-top" class="scroll-to-top rounded">--}}
-{{--    <i class="fas fa-angle-up"></i>--}}
-{{--</a>--}}
-{{--<div class="container">--}}
-{{--    <div class="container-fluid container-application">--}}
-{{--        <div class="main-content position-relative">--}}
-{{--            <div class="page-content">--}}
-{{--                <div class="min-vh-100 py-5 d-flex align-items-center">--}}
-{{--                    <div class="w-100">--}}
-{{--                        <div class="row justify-content-center">--}}
-{{--                            @yield('content')--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
 </div>
 <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/js/scripts.js')}}"></script>

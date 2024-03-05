@@ -20,7 +20,9 @@ class EtudiantController extends Controller
     public function index()
     {
         $etudiant = Etudiant::orderBy('updated_at' , 'DESC')->get();
-        return view('etudiant.list', compact('etudiant'));
+        $etudiant = Etudiant::latest()->paginate(5);
+        return view('etudiant.list', compact('etudiant'))
+            ->with('i', (request()->input('page', 1) -1) * 5);
     }
 
     /**

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Matiere
- * 
+ *
  * @property string $code_mat
  * @property string $label_mat
  * @property int $credit_mat
@@ -34,6 +34,7 @@ class Matiere extends Model
 	];
 
 	protected $fillable = [
+        'code_mat',
 		'label_mat',
 		'credit_mat',
 		'vh_mat',
